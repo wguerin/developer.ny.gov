@@ -2,9 +2,8 @@
 * [White House Web API Standards](#white-house-web-api-standards)
 * [18F API Standards](#18f-api-standards)
 
-## White House Web API Standards
+## Web API Standards
 
-* [Guidelines](#guidelines)
 * [Pragmatic REST](#pragmatic-rest)
 * [RESTful URLs](#restful-urls)
 * [HTTP Verbs](#http-verbs)
@@ -15,24 +14,9 @@
 * [Request & Response Examples](#request--response-examples)
 * [Mock Responses](#mock-responses)
 * [JSONP](#jsonp)
-
-## Guidelines
-
-This document provides guidelines and examples for White House Web APIs, encouraging consistency, maintainability, and best practices across applications. White House APIs aim to balance a truly RESTful API interface with a positive developer experience (DX).
-
-This document borrows heavily from:
-* [Designing HTTP Interfaces and RESTful Web Services](https://www.youtube.com/watch?v=zEyg0TnieLg)
-* [API Facade Pattern](http://apigee.com/about/content/api-fa%C3%A7ade-pattern), by Brian Mulloy, Apigee
-* [Web API Design](http://pages.apigee.com/web-api-design-ebook.html), by Brian Mulloy, Apigee
-* [Fielding's Dissertation on REST](http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm)
-
-### Pragmatic REST
-
-These guidelines aim to support a truly RESTful API. Here are a few exceptions:
-* Put the version number of the API in the URL (see examples below). Don’t accept any requests that do not specify a version number.
-* Allow users to request formats like JSON or XML like this:
-    * http://example.gov/api/v1/magazines.json
-    * http://example.gov/api/v1/magazines.xml
+* 
+* [Design for common use cases](#design-for-common-use-cases)
+* [Guidelines](#guidelines)
 
 ## RESTful URLs
 
@@ -298,22 +282,28 @@ JSONP is easiest explained with an example. Here's one from [StackOverflow](http
 
 http://stackoverflow.com/questions/2067472/what-is-jsonp-all-about?answertab=votes#tab-top
 
+## Guidelines
 
+This document provides guidelines and examples for New York State ITS Web APIs, encouraging consistency, maintainability, and best practices across applications. New York State ITS APIs aim to balance a truly RESTful API interface with a positive developer experience (DX).
+
+This document borrows heavily from:
+* [White House Web API Standards](https://github.com/WhiteHouse/api-standards)
+* [18F API Standards](https://github.com/18F/api-standards)
+* [Designing HTTP Interfaces and RESTful Web Services](https://www.youtube.com/watch?v=zEyg0TnieLg)
+* [API Facade Pattern](http://apigee.com/about/content/api-fa%C3%A7ade-pattern), by Brian Mulloy, Apigee
+* [Web API Design](http://pages.apigee.com/web-api-design-ebook.html), by Brian Mulloy, Apigee
+* [Fielding's Dissertation on REST](http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm)
+
+### Pragmatic REST
+
+These guidelines aim to support a truly RESTful API. Here are a few exceptions:
+* Put the version number of the API in the URL (see examples below). Don’t accept any requests that do not specify a version number.
+* Allow users to request formats like JSON or XML like this:
+    * http://example.gov/api/v1/magazines.json
+    * http://example.gov/api/v1/magazines.xml
 ---
 
-
-## 18F API Standards
-
-This document captures 18F's view of API best practices and standards. We aim to incorporate as many of them as possible into our work.
-
-APIs, like other web applications, vary greatly in implementation and design, depending on the situation and the problem the application is solving.
-
-This document provides a mix of:
-
-* **High level design guidance** that individual APIs interpret to meet their needs.
-* **Low level web practices** that most modern HTTP APIs use.
-
-### Design for common use cases
+## Design for common use cases
 
 For APIs that syndicate data, consider several common client use cases:
 
@@ -471,7 +461,7 @@ However, some clients and networks still do not properly support SNI. As of this
 * Internet Explorer 8 and below on Windows XP
 * Android 2.3 (Gingerbread) and below.
 * All versions of Python 2.x (a version of Python 2.x with SNI [is planned](http://legacy.python.org/dev/peps/pep-0466/)).
-* Some enterprise network environments have been configured in some custom way that disables or interferes with SNI support. One identified network where this is the case: the White House.
+* Some enterprise network environments have been configured in some custom way that disables or interferes with SNI support.
 
 When implementing SSL support for an API, evaluate whether SNI support makes sense for the audience it serves.
 
