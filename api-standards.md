@@ -1,5 +1,5 @@
 * [White House Web API Standards](#White House Weh API Standards)
-* [18F Web API Standards](#18F Web API Standards)
+* [18F API Standards](#18F API Standards)
 # White House Web API Standards
 
 * [Guidelines](#guidelines)
