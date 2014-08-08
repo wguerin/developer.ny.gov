@@ -16,7 +16,7 @@
 * [Mock Responses](#mock-responses)
 * [JSONP](#jsonp)
 
-### Guidelines
+## Guidelines
 
 This document provides guidelines and examples for White House Web APIs, encouraging consistency, maintainability, and best practices across applications. White House APIs aim to balance a truly RESTful API interface with a positive developer experience (DX).
 
