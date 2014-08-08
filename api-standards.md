@@ -14,7 +14,6 @@
 * [Request & Response Examples](#request--response-examples)
 * [Mock Responses](#mock-responses)
 * [JSONP](#jsonp)
-* 
 * [Design for common use cases](#design-for-common-use-cases)
 * [Guidelines](#guidelines)
 
@@ -282,27 +281,6 @@ JSONP is easiest explained with an example. Here's one from [StackOverflow](http
 
 http://stackoverflow.com/questions/2067472/what-is-jsonp-all-about?answertab=votes#tab-top
 
-## Guidelines
-
-This document provides guidelines and examples for New York State ITS Web APIs, encouraging consistency, maintainability, and best practices across applications. New York State ITS APIs aim to balance a truly RESTful API interface with a positive developer experience (DX).
-
-This document borrows heavily from:
-* [White House Web API Standards](https://github.com/WhiteHouse/api-standards)
-* [18F API Standards](https://github.com/18F/api-standards)
-* [Designing HTTP Interfaces and RESTful Web Services](https://www.youtube.com/watch?v=zEyg0TnieLg)
-* [API Facade Pattern](http://apigee.com/about/content/api-fa%C3%A7ade-pattern), by Brian Mulloy, Apigee
-* [Web API Design](http://pages.apigee.com/web-api-design-ebook.html), by Brian Mulloy, Apigee
-* [Fielding's Dissertation on REST](http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm)
-
-### Pragmatic REST
-
-These guidelines aim to support a truly RESTful API. Here are a few exceptions:
-* Put the version number of the API in the URL (see examples below). Don’t accept any requests that do not specify a version number.
-* Allow users to request formats like JSON or XML like this:
-    * http://example.gov/api/v1/magazines.json
-    * http://example.gov/api/v1/magazines.xml
----
-
 ## Design for common use cases
 
 For APIs that syndicate data, consider several common client use cases:
@@ -311,7 +289,7 @@ For APIs that syndicate data, consider several common client use cases:
 * **Staying up to date.** Especially for large datasets, clients may want to keep their dataset up to date without downloading the data set after every change. If this is a use case for the API, prioritize it in the design.
 * **Driving expensive actions.** What would happen if a client wanted to automatically send text messages to thousands of people or light up the side of a skyscraper every time a new record appears? Consider whether the API's records will always be in a reliable unchanging order, and whether they tend to appear in clumps or in a steady stream. Generally speaking, consider the "entropy" an API client would experience.\
 
-### Using one's own API
+### Using your own API
 
 The #1 best way to understand and address the weaknesses in an API's design and implementation is to use it in a production system.
 
@@ -497,3 +475,15 @@ For more advanced configuration, see the [W3C spec](http://www.w3.org/TR/cors/) 
 
 JSONP is [not secure or performant](https://gist.github.com/tmcw/6244497). If IE8 or IE9 must be supported, use Microsoft's [XDomainRequest](http://blogs.msdn.com/b/ieinternals/archive/2010/05/13/xdomainrequest-restrictions-limitations-and-workarounds.aspx?Redirected=true) object instead of JSONP. There are [libraries](https://github.com/mapbox/corslite) to help with this.
 
+
+## Guidelines
+
+This document provides guidelines and examples for New York State ITS Web APIs, encouraging consistency, maintainability, and best practices across applications. New York State ITS APIs aim to balance a truly RESTful API interface with a positive developer experience (DX).
+
+This document borrows heavily from:
+* [White House Web API Standards](https://github.com/WhiteHouse/api-standards)
+* [18F API Standards](https://github.com/18F/api-standards)
+* [Designing HTTP Interfaces and RESTful Web Services](https://www.youtube.com/watch?v=zEyg0TnieLg)
+* [API Facade Pattern](http://apigee.com/about/content/api-fa%C3%A7ade-pattern), by Brian Mulloy, Apigee
+* [Web API Design](http://pages.apigee.com/web-api-design-ebook.html), by Brian Mulloy, Apigee
+* [Fielding's Dissertation on REST](http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm)
