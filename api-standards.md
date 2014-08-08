@@ -1,6 +1,6 @@
-* [White House Web API Standards](#White-House-Web-API-Standards)
-* [18F API Standards](#18F-API-Standards)
-* 
+* [White House Web API Standards](#white-house-web-api-standards)
+* [18F API Standards](#18f-api-standards)
+
 ## White House Web API Standards
 
 * [Guidelines](#guidelines)
