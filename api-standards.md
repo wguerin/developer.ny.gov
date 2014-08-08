@@ -16,7 +16,7 @@
 * [Mock Responses](#mock-responses)
 * [JSONP](#jsonp)
 
-## Guidelines
+### Guidelines
 
 This document provides guidelines and examples for White House Web APIs, encouraging consistency, maintainability, and best practices across applications. White House APIs aim to balance a truly RESTful API interface with a positive developer experience (DX).
 
@@ -26,7 +26,7 @@ This document borrows heavily from:
 * [Web API Design](http://pages.apigee.com/web-api-design-ebook.html), by Brian Mulloy, Apigee
 * [Fielding's Dissertation on REST](http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm)
 
-## Pragmatic REST
+### Pragmatic REST
 
 These guidelines aim to support a truly RESTful API. Here are a few exceptions:
 * Put the version number of the API in the URL (see examples below). Don’t accept any requests that do not specify a version number.
