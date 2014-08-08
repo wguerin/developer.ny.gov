@@ -1,6 +1,4 @@
 # Web API Standards
-
-* [Pragmatic REST](#pragmatic-rest)
 * [RESTful URLs](#restful-urls)
 * [HTTP Verbs](#http-verbs)
 * [Responses](#responses)
