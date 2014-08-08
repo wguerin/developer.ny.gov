@@ -1,6 +1,7 @@
-* [White House Web API Standards](#White House Weh API Standards)
-* [18F API Standards](#18F API Standards)
-# White House Web API Standards
+* [White House Web API Standards](#White-House-Web-API-Standards)
+* [18F API Standards](#18F-API-Standards)
+* 
+## White House Web API Standards
 
 * [Guidelines](#guidelines)
 * [Pragmatic REST](#pragmatic-rest)
@@ -300,7 +301,7 @@ http://stackoverflow.com/questions/2067472/what-is-jsonp-all-about?answertab=vot
 ---
 
 
-# 18F API Standards
+## 18F API Standards
 
 This document captures 18F's view of API best practices and standards. We aim to incorporate as many of them as possible into our work.
 
