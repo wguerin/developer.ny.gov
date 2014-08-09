@@ -1,4 +1,7 @@
-# Web API Standards
+# Web API Guidelines
+
+This document provides guidelines and examples for the development of New York State ITS Web APIs, encouraging consistency, maintainability, and best practices across applications. New York State ITS APIs aim to balance a truly RESTful API interface with a positive developer experience (DX).
+
 * [RESTful URLs](#restful-urls)
 * [HTTP Verbs](#http-verbs)
 * [Responses](#responses)
@@ -469,12 +472,8 @@ For more advanced configuration, see the [W3C spec](http://www.w3.org/TR/cors/) 
 
 JSONP is [not secure or performant](https://gist.github.com/tmcw/6244497). If IE8 or IE9 must be supported, use Microsoft's [XDomainRequest](http://blogs.msdn.com/b/ieinternals/archive/2010/05/13/xdomainrequest-restrictions-limitations-and-workarounds.aspx?Redirected=true) object instead of JSONP. There are [libraries](https://github.com/mapbox/corslite) to help with this.
 
+## Sources
 
-## Guidelines
-
-This document provides guidelines and examples for New York State ITS Web APIs, encouraging consistency, maintainability, and best practices across applications. New York State ITS APIs aim to balance a truly RESTful API interface with a positive developer experience (DX).
-
-This document borrows heavily from:
 * [White House Web API Standards](https://github.com/WhiteHouse/api-standards)
 * [18F API Standards](https://github.com/18F/api-standards)
 * [Designing HTTP Interfaces and RESTful Web Services](https://www.youtube.com/watch?v=zEyg0TnieLg)
