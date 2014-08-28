@@ -1,6 +1,7 @@
 #
 # This file contains configuration flags to customize your site
 #
+# Forked from http://github.com/barryclark/jekyll-now
 
 # Name of your site (displayed in the header)
 name: Browser Guidelines
