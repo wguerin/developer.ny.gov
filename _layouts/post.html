@@ -1,0 +1,17 @@
+---
+layout: default
+---
+
+<article class="post">
+    <h1><a href="{{ site.baseurl }}{{ page.url }}">{{ page.title }}</a></h1>
+
+    <div class="entry">
+        {{ content }}
+    </div>
+
+    {% if page.date %}
+    <div class="date">
+        Written on {{ page.date | date: "%B %e, %Y" }}
+    </div>
+    {% endif %}
+</article>
