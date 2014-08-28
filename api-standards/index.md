@@ -35,6 +35,7 @@ This document provides guidelines and examples for the development of New York S
 * Formats should be in the form of api/v2/resource/{id}.json
 
 ### Good URL examples
+
 * List of magazines:
     * GET http://www.example.gov/api/v1/magazines.json
 * Filtering is a query:
@@ -52,6 +53,7 @@ This document provides guidelines and examples for the development of New York S
     * POST http://example.gov/api/v1/magazines/1234/articles
 
 ### Bad URL examples
+
 * Non-plural noun:
     * http://www.example.gov/magazine
     * http://www.example.gov/magazine/1234
@@ -85,41 +87,44 @@ The action taken on the representation will be contextual to the media type bein
 
 No values in keys:
 
-    "tags": [
-      {"id": "125", "name": "Environment"},
-      {"id": "834", "name": "Water Quality"}
-    ],
-
+```json
+"tags": [
+    {"id": "125", "name": "Environment"},
+    {"id": "834", "name": "Water Quality"}
+],
+```
 
 ### Bad examples
 
 Values in keys:
 
-    "tags": [
-      {"125": "Environment"},
-      {"834": "Water Quality"}
-    ],
-
+```json
+"tags": [
+    {"125": "Environment"},
+    {"834": "Water Quality"}
+],
+```
 
 ## Error handling
 
 Error responses should include a common HTTP status code, message for the developer, message for the end-user (when appropriate), internal error code (corresponding to some specific internally determined ID), links where developers can find more info. For example:
 
-    {
-      "status" : 400,
-      "developerMessage" : "Verbose, plain language description of the problem. Provide developers
-       suggestions about how to solve their problems here",
-      "userMessage" : "This is a message that can be passed along to end-users, if needed.",
-      "errorCode" : "444444",
-      "moreInfo" : "http://www.example.gov/developer/path/to/help/for/444444,
-       http://drupal.org/node/444444",
-    }
+```json
+{
+    "status" : 400,
+    "developerMessage" : "Verbose, plain language description of the problem. Provide developers suggestions about how to solve their problems here",
+    "userMessage" : "This is a message that can be passed along to end-users, if needed.",
+    "errorCode" : "444444",
+    "moreInfo" : "http://www.example.gov/developer/path/to/help/for/444444,
+   http://drupal.org/node/444444",
+}
+```
 
 Use three simple, common response codes indicating (1) success, (2) failure due to client-side problem, (3) failure due to server-side problem:
-* 200 - OK
-* 400 - Bad Request
-* 500 - Internal Server Error
 
+* `200` - OK
+* `400` - Bad Request
+* `500` - Internal Server Error
 
 ## Versions
 
@@ -128,7 +133,6 @@ Use three simple, common response codes indicating (1) success, (2) failure due 
     * Good: v1, v2, v3
     * Bad: v-1.1, v1.2, 1.3
 * Maintain APIs at least one version back.
-
 
 ## Record limits
 
@@ -140,24 +144,26 @@ Use three simple, common response codes indicating (1) success, (2) failure due 
 
 Information about record limits and total available count should also be included in the response. Example:
 
-    {
-        "metadata": {
-            "resultset": {
-                "count": 227,
-                "offset": 25,
-                "limit": 25
-            }
-        },
-        "results": []
-    }
+```json
+{
+    "metadata": {
+        "resultset": {
+            "count": 227,
+            "offset": 25,
+            "limit": 25
+        }
+    },
+    "results": []
+}
+```
 
 ## Request & Response Examples
 
 ### API Resources
 
-  - [GET /magazines](#get-magazines)
-  - [GET /magazines/[id]](#get-magazinesid)
-  - [POST /magazines/[id]/articles](#post-magazinesidarticles)
+- [GET /magazines](#get-magazines)
+- [GET /magazines/[id]](#get-magazinesid)
+- [POST /magazines/[id]/articles](#post-magazinesidarticles)
 
 ### GET /magazines
 
@@ -165,46 +171,48 @@ Example: http://example.gov/api/v1/magazines.json
 
 Response body:
 
-    {
-        "metadata": {
-            "resultset": {
-                "count": 123,
-                "offset": 0,
-                "limit": 10
-            }
+```json
+{
+    "metadata": {
+        "resultset": {
+            "count": 123,
+            "offset": 0,
+            "limit": 10
+        }
+    },
+    "results": [
+        {
+            "id": "1234",
+            "type": "magazine",
+            "title": "Public Water Systems",
+            "tags": [
+                {"id": "125", "name": "Environment"},
+                {"id": "834", "name": "Water Quality"}
+            ],
+            "created": "1231621302"
         },
-        "results": [
-            {
-                "id": "1234",
-                "type": "magazine",
-                "title": "Public Water Systems",
-                "tags": [
-                    {"id": "125", "name": "Environment"},
-                    {"id": "834", "name": "Water Quality"}
-                ],
-                "created": "1231621302"
-            },
-            {
-                "id": 2351,
-                "type": "magazine",
-                "title": "Public Schools",
-                "tags": [
-                    {"id": "125", "name": "Elementary"},
-                    {"id": "834", "name": "Charter Schools"}
-                ],
-                "created": "126251302"
-            }
-            {
-                "id": 2351,
-                "type": "magazine",
-                "title": "Public Schools",
-                "tags": [
-                    {"id": "125", "name": "Pre-school"},
-                ],
-                "created": "126251302"
-            }
-        ]
-    }
+        {
+            "id": 2351,
+            "type": "magazine",
+            "title": "Public Schools",
+            "tags": [
+                {"id": "125", "name": "Elementary"},
+                {"id": "834", "name": "Charter Schools"}
+            ],
+            "created": "126251302"
+        }
+        {
+            "id": 2351,
+            "type": "magazine",
+            "title": "Public Schools",
+            "tags": [
+                {"id": "125", "name": "Pre-school"},
+            ],
+            "created": "126251302"
+        }
+    ]
+}
+```
 
 ### GET /magazines/[id]
 
@@ -212,17 +220,18 @@ Example: http://example.gov/api/v1/magazines/[id].json
 
 Response body:
 
-    {
-        "id": "1234",
-        "type": "magazine",
-        "title": "Public Water Systems",
-        "tags": [
-            {"id": "125", "name": "Environment"},
-            {"id": "834", "name": "Water Quality"}
-        ],
-        "created": "1231621302"
-    }
-
+```json
+{
+    "id": "1234",
+    "type": "magazine",
+    "title": "Public Water Systems",
+    "tags": [
+        {"id": "125", "name": "Environment"},
+        {"id": "834", "name": "Water Quality"}
+    ],
+    "created": "1231621302"
+}
+```
 
 
 ### POST /magazines/[id]/articles
@@ -231,21 +240,24 @@ Example: Create – POST  http://example.gov/api/v1/magazines/[id]/articles
 
 Request body:
 
-    [
-        {
-            "title": "Raising Revenue",
-            "author_first_name": "Jane",
-            "author_last_name": "Smith",
-            "author_email": "jane.smith@example.gov",
-            "year": "2012",
-            "month": "August",
-            "day": "18",
-            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget ante ut augue scelerisque ornare. Aliquam tempus rhoncus quam vel luctus. Sed scelerisque fermentum fringilla. Suspendisse tincidunt nisl a metus feugiat vitae vestibulum enim vulputate. Quisque vehicula dictum elit, vitae cursus libero auctor sed. Vestibulum fermentum elementum nunc. Proin aliquam erat in turpis vehicula sit amet tristique lorem blandit. Nam augue est, bibendum et ultrices non, interdum in est. Quisque gravida orci lobortis... "
-        }
-    ]
+```json
+[
+    {
+        "title": "Raising Revenue",
+        "author_first_name": "Jane",
+        "author_last_name": "Smith",
+        "author_email": "jane.smith@example.gov",
+        "year": "2012",
+        "month": "August",
+        "day": "18",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget ante ut augue scelerisque ornare. Aliquam tempus rhoncus quam vel luctus. Sed scelerisque fermentum fringilla. Suspendisse tincidunt nisl a metus feugiat vitae vestibulum enim vulputate. Quisque vehicula dictum elit, vitae cursus libero auctor sed. Vestibulum fermentum elementum nunc. Proin aliquam erat in turpis vehicula sit amet tristique lorem blandit. Nam augue est, bibendum et ultrices non, interdum in est. Quisque gravida orci lobortis... "
+    }
+]
+```
 
 
 ## Mock Responses
+
 It is suggested that each resource accept a 'mock' parameter on the testing server. Passing this parameter should return a mock data response (bypassing the backend).
 
 Implementing this feature early in development ensures that the API will exhibit consistent behavior, supporting a test driven development methodology.
@@ -331,9 +343,9 @@ Generally speaking:
 
 Some examples of these principles in action:
 
-* [FBOpen API documentation](http://docs.fbopen.apiary.io)
-* [OpenFDA example query](http://open.fda.gov/api/reference/#example-query)
-* [Sunlight Congress API methods](https://sunlightlabs.github.io/congress/#using-the-api)
+- [FBOpen API documentation](http://docs.fbopen.apiary.io)
+- [OpenFDA example query](http://open.fda.gov/api/reference/#example-query)
+- [Sunlight Congress API methods](https://sunlightlabs.github.io/congress/#using-the-api)
 
 ### Just use JSON
 
@@ -343,9 +355,9 @@ Supporting JSON and only JSON is a practical default for APIs, and generally red
 
 General JSON guidelines:
 
-* Responses should be **a JSON object** (not an array). Using an array to return results limits the ability to include metadata about results, and limits the API's ability to add additional top-level keys in the future.
-* **Don't use unpredictable keys**. Parsing a JSON response where keys are unpredictable (e.g. derived from data) is difficult, and adds friction for clients.
-* **Use `under_score` case for keys**. Different languages use different case conventions. JSON uses `under_score`, not `camelCase`.
+- Responses should be **a JSON object** (not an array). Using an array to return results limits the ability to include metadata about results, and limits the API's ability to add additional top-level keys in the future.
+- **Don't use unpredictable keys**. Parsing a JSON response where keys are unpredictable (e.g. derived from data) is difficult, and adds friction for clients.
+- **Use `under_score` case for keys**. Different languages use different case conventions. JSON uses `under_score`, not `camelCase`.
 
 ### Use a consistent date format
 
@@ -354,7 +366,6 @@ And specifically, [use ISO 8601](https://xkcd.com/1179/), in UTC.
 For just dates, that looks like `2013-02-27`. For full times, that's of the form `2013-02-27T10:00:00Z`.
 
 This date format is used all over the web, and puts each field in consistent order -- from least granular to most granular.
-
 
 ### API Keys
 
@@ -366,7 +377,6 @@ This allows newcomers to use and experiment with the API in demo environments an
 
 Consider whether one of your product goals is to allow a certain level of normal production use of the API without enforcing advanced registration by clients.
 
-
 ### Error handling
 
 Handle all errors (including otherwise uncaught exceptions) and return a data structure in the same format as the rest of the API.
@@ -375,9 +385,9 @@ For example, a JSON API might provide the following when an uncaught exception o
 
 ```json
 {
-  "status" : 500,
-  "message": "Description of the error.",
-  "exception": "[detailed stacktrace]"
+    "status" : 500,
+    "message": "Description of the error.",
+    "exception": "[detailed stacktrace]"
 }
 ```
 
@@ -404,12 +414,12 @@ Example of how that might be implemented:
 
 ```json
 {
-  "results": [ ... actual results ... ],
-  "pagination": {
-    "count": 2340,
-    "page": 4,
-    "per_page": 20
-  }
+    "results": [ ... actual results ... ],
+    "pagination": {
+        "count": 2340,
+        "page": 4,
+        "per_page": 20
+    }
 }
 ```
 
@@ -479,9 +489,9 @@ JSONP is [not secure or performant](https://gist.github.com/tmcw/6244497). If IE
 
 ## Sources
 
-* [White House Web API Standards](https://github.com/WhiteHouse/api-standards)
-* [18F API Standards](https://github.com/18F/api-standards)
-* [Designing HTTP Interfaces and RESTful Web Services](https://www.youtube.com/watch?v=zEyg0TnieLg)
-* [API Facade Pattern](http://apigee.com/about/content/api-fa%C3%A7ade-pattern), by Brian Mulloy, Apigee
-* [Web API Design](http://pages.apigee.com/web-api-design-ebook.html), by Brian Mulloy, Apigee
-* [Fielding's Dissertation on REST](http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm)
+- [White House Web API Standards](https://github.com/WhiteHouse/api-standards)
+- [18F API Standards](https://github.com/18F/api-standards)
+- [Designing HTTP Interfaces and RESTful Web Services](https://www.youtube.com/watch?v=zEyg0TnieLg)
+- [API Facade Pattern](http://apigee.com/about/content/api-fa%C3%A7ade-pattern), by Brian Mulloy, Apigee
+- [Web API Design](http://pages.apigee.com/web-api-design-ebook.html), by Brian Mulloy, Apigee
+- [Fielding's Dissertation on REST](http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm)
