@@ -3,8 +3,6 @@ layout: post
 title: Web API Standards
 ---
 
-# Web API Standards
-
 This document provides guidelines and examples for the development of New York State ITS Web APIs, encouraging consistency, maintainability, and best practices across applications. New York State ITS APIs aim to balance a truly RESTful API interface with a positive developer experience (DX).
 
 * [RESTful URLs](#restful-urls)

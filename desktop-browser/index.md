@@ -1,6 +1,5 @@
 ---
 layout: post
-title: Browser Support
+title: Enterprise Browser Support
 ---
 
-# Browser Support Guidelines
